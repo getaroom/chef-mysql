@@ -18,6 +18,10 @@ When 'I update a row in a database table' do
   update_chef_name('Paula Deen', 'Paula Hiers Deen')
 end
 
+When 'I convert the time zone of a date time in a query' do
+  select_converted_date_time
+end
+
 Then 'the expected data should be returned' do
   tv_chefs.must_equal(['Alison Holst', 'Nigella Lawson', 'Paula Deen'])
 end
@@ -44,4 +48,8 @@ Then 'the updated data should be returned for subsequent queries' do
   ensure
     update_chef_name('Paula Hiers Deen', 'Paula Deen')
   end
+end
+
+Then 'the converted date time should be returned' do
+  converted_date_time.must_equal expected_date_time
 end

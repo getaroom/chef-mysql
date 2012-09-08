@@ -24,3 +24,7 @@ I want to be able to query the database
     Given a new database server with some example data
      When I delete a row from a database table
      Then the deleted data should not be returned for subsequent queries
+
+  Scenario: Convert the time zone of a date time
+     When I convert the time zone of a date time in a query
+     Then the converted date time should be returned

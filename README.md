@@ -195,6 +195,10 @@ When the `ec2_path` doesn't exist we look for a mounted filesystem
 
 The client recipe is already included by server and 'default' recipes.
 
+To populate MySQL's time zone tables, use the `time_zone_tables` recipe.
+
+    { "run_list": ["recipe[mysql::time_zone_tables]"] }
+
 For more infromation on the compile vs execution phase of a Chef run:
 
 * http://wiki.opscode.com/display/chef/Anatomy+of+a+Chef+Run
@@ -208,6 +212,7 @@ License and Author
 - Author:: Brian Bianco (<brian.bianco@gmail.com>)
 - Author:: Jesse Howarth (<him@jessehowarth.com>)
 - Author:: Andrew Crump (<andrew@kotirisoftware.com>)
+- Author:: Chris Griego (<cgriego@getaroom.com>)
 
 Copyright:: 2009-2012 Opscode, Inc
 

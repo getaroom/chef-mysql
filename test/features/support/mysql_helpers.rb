@@ -49,3 +49,14 @@ def update_chef_name(old_name, new_name)
   update("UPDATE tv_chef SET name = '#{new_name}' WHERE name = '#{old_name}'")
 end
 
+def select_converted_date_time
+  @converted_date_time = query(%{SELECT CONVERT_TZ('2004-01-01 12:00:00','GMT','MET');}).strip
+end
+
+def converted_date_time
+  @converted_date_time
+end
+
+def expected_date_time
+  '2004-01-01 13:00:00'
+end

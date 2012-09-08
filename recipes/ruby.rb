@@ -33,4 +33,8 @@ node['mysql']['client']['packages'].each do |mysql_pack|
   resources("package[#{mysql_pack}]").run_action(:install)
 end
 
-chef_gem "mysql"
+if defined? Chef::Resource::ChefGem
+  chef_gem "mysql"
+else
+  gem_package "mysql"
+end

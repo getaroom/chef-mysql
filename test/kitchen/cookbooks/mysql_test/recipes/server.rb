@@ -41,6 +41,7 @@ file "/etc/sysconfig/network" do
 end
 
 include_recipe 'mysql::server'
+include_recipe 'mysql::time_zone_tables'
 
 mysql_connection = {:host => "localhost", :username => 'root',
                     :password => node['mysql']['server_root_password']}
