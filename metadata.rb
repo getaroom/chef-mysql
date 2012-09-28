@@ -17,6 +17,7 @@ end
 
 depends "openssl"
 depends "build-essential"
+suggests "apt"
 suggests "homebrew"
 suggests "windows"
 
