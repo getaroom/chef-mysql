@@ -55,6 +55,13 @@ if platform?(%w{debian ubuntu})
     mode "0600"
   end
 
+  template "/root/.my.cnf" do
+    source "root-my.cnf.erb"
+    owner "root"
+    group node['mysql']['root_group']
+    mode "0600"
+  end
+
 end
 
 if platform? 'windows'
