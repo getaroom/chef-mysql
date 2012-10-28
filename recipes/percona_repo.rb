@@ -1,11 +1,9 @@
-include_recipe 'apt'
-
 case node['platform']
 when "debian","ubuntu"
+  include_recipe 'apt'
 
   apt_repository "percona" do
-    keyserver "keys.gnupg.net"
-    key "1C4CBDCDCD2EFD2A"
+    key "percona.key"
     deb_src true
     uri "http://repo.percona.com/apt"
     distribution node['lsb']['codename']
@@ -16,6 +14,5 @@ when "debian","ubuntu"
 
   execute "compile time apt-get update" do
     command "apt-get update"
-   end.run_action(:run)
+  end.run_action(:run)
 end
-
