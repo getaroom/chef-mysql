@@ -42,6 +42,19 @@ when "mac_os_x"
   include_recipe 'homebrew'
 end
 
+group "mysql" do
+  gid 500
+  system true
+end
+
+user "mysql" do
+  comment "giving this user a specific uid/gid across all systems"
+  uid 500
+  gid 500
+  system true
+  supports({:manage_home => false})
+end
+
 node['mysql']['client']['packages'].each do |mysql_pack|
   package mysql_pack do
     action :install
