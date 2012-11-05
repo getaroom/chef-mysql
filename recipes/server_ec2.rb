@@ -19,6 +19,10 @@
 
 if (node.attribute?('ec2') && ! FileTest.directory?(node['mysql']['ec2_path']))
 
+  directory File.dirname(node['mysql']['ec2_path']) do
+    recursive true
+  end
+
   service "mysql" do
     action :stop
   end
