@@ -153,6 +153,6 @@ default['mysql']['tunable']['long_query_time']      = 2
 default['mysql']['tunable']['expire_logs_days']     = 10
 default['mysql']['tunable']['max_binlog_size']      = "100M"
 
-default['mysql']['tunable']['ignore_tables']
-default['mysql']['tunable']['wild_ignore_tables']
-default['mysql']['tunable']['read_only']
+default['mysql']['tunable']['ignore_tables'] = []
+default['mysql']['tunable']['wild_ignore_tables'] = []
+default['mysql']['tunable']['read_only'] = false
