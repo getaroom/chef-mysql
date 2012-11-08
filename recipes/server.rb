@@ -35,6 +35,13 @@ if platform?(%w{debian ubuntu})
     recursive true
   end
 
+  directory File.dirname(node['mysql']['tunable']['log_slow_queries']) do
+    owner "mysql"
+    group "mysql"
+    mode 0755
+    recursive true
+  end
+
   execute "preseed mysql-server" do
     command "debconf-set-selections /var/cache/local/preseeding/mysql-server.seed"
     action :nothing
