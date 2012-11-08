@@ -129,6 +129,17 @@ unless platform?(%w{mac_os_x})
                      false
                    end
 
+  template "#{node['mysql']['conf_dir']}/conf.d/custom_ignores.cnf" do
+    source "custom_ignores.cnf.erb"
+    owner "root" unless platform? 'windows'
+    group node['mysql']['root_group'] unless platform? 'windows'
+    mode "0644"
+    variables(
+      :ignore_tables => node['mysql']['tunable']['ignore_tables'],
+      :wild_ignore_tables => node['mysql']['tunable']['wild_ignore_tables'],
+    )
+  end
+
   template "#{node['mysql']['conf_dir']}/my.cnf" do
     source "my.cnf.erb"
     owner "root" unless platform? 'windows'

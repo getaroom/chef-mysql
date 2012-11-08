@@ -108,6 +108,14 @@ log-queries-not-using-indexes
 # note: if you are setting up a replication slave, see README.Debian about
 #       other settings you may need to change.
 #server-id              = 1
+<%- if node['mysql']['tunable']['server-id'] %>
+server-id               = <%= node['mysql']['tunable']['server-id'] %>
+<%- else %>
+server-id               = <%= IPAddr.new(node['cloud']['local_ipv4']).to_i %>
+<%- end %>
+<%- if node['mysql']['tunable']['read_only'] %>
+read-only
+<%- end %>
 <%- if node['mysql']['tunable']['log_bin'] %>
 log_bin = <%= node['mysql']['tunable']['log_bin'] %>
 log_slave_updates       = <%= node['mysql']['tunable']['log_slave_updates'] %>
