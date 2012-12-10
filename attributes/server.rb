@@ -156,3 +156,4 @@ default['mysql']['tunable']['max_binlog_size']      = "100M"
 default['mysql']['tunable']['ignore_tables'] = []
 default['mysql']['tunable']['wild_ignore_tables'] = []
 default['mysql']['tunable']['read_only'] = false
+default['mysql']['tunable']['replicate_rewrite'] = []

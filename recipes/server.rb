@@ -153,7 +153,7 @@ unless platform?(%w{mac_os_x})
     group node['mysql']['root_group'] unless platform? 'windows'
     mode "0644"
     variables(
-      :replication_rewrite => node['mysql']['tunable']['replicate_rewrite']
+      :replicate_rewrite => node['mysql']['tunable']['replicate_rewrite']
     )
   end
 
