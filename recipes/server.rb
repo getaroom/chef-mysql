@@ -147,6 +147,16 @@ unless platform?(%w{mac_os_x})
     )
   end
 
+  template "#{node['mysql']['conf_dir']}/conf.d/replicate_rewrite_db.cnf" do
+    source "replicate_rewrite_db.cnf.erb"
+    owner "root" unless platform? 'windows'
+    group node['mysql']['root_group'] unless platform? 'windows'
+    mode "0644"
+    variables(
+      :replication_rewrite => node['mysql']['tunable']['replicate_rewrite']
+    )
+  end
+
   template "#{node['mysql']['conf_dir']}/my.cnf" do
     source "my.cnf.erb"
     owner "root" unless platform? 'windows'
