@@ -2,10 +2,10 @@
 
 # existing temporary tables
 <%- @ignore_tables.to_a.each do |table| %>
-replicate-ignore-table = <% table %>
+replicate-ignore-table = <%= table %>
 <%- end %>
 
 # future temporary tables
 <%- @wild_ignore_tables.to_a.each do |table| %>
-replicate-wild-ignore-table = <% table %>
+replicate-wild-ignore-table = <%= table %>
 <%- end %>
