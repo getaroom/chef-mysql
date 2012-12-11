@@ -28,16 +28,22 @@ node.set_unless['mysql']['server_repl_password']   = secure_password
 
 if platform?(%w{debian ubuntu})
 
-  directory "/var/cache/local/preseeding" do
-    owner "root"
-    group node['mysql']['root_group']
+  directory File.dirname(node['mysql']['tunable']['log_slow_queries']) do
+    owner "mysql"
+    group "mysql"
     mode 0755
     recursive true
   end
 
-  directory File.dirname(node['mysql']['tunable']['log_slow_queries']) do
+  file node['mysql']['tunable']['log_slow_queries'] do
     owner "mysql"
-    group "mysql"
+    group "adm"
+    mode "660"
+  end
+
+  directory "/var/cache/local/preseeding" do
+    owner "root"
+    group node['mysql']['root_group']
     mode 0755
     recursive true
   end
