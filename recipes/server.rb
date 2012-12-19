@@ -43,8 +43,8 @@ if platform?(%w{debian ubuntu})
 
   directory "/var/cache/local/preseeding" do
     owner "root"
-    group node['mysql']['root_group']
-    mode 0755
+    group "root"
+    mode  0644
     recursive true
   end
 
