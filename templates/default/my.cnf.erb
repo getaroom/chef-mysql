@@ -62,6 +62,10 @@ key_buffer              = <%= node['mysql']['tunable']['key_buffer'] %>
 max_allowed_packet      = <%= node['mysql']['tunable']['max_allowed_packet'] %>
 thread_stack            = <%= node['mysql']['tunable']['thread_stack'] %>
 thread_cache_size       = <%= node['mysql']['tunable']['thread_cache_size'] %>
+read_buffer_size        = <%= node['mysql']['tunable']['read_buffer_size'] %>
+join_buffer_size        = <%= node['mysql']['tunable']['join_buffer_size'] %>
+tmp_table_size          = <%= node['mysql']['tunable']['tmp_table_size'] %>
+table_open_cache        = <%= node['mysql']['tunable']['table_open_cache'] %>
 
 auto-increment-increment = <%= node['mysql']['auto-increment-increment'] %>
 auto-increment-offset    = <%= node['mysql']['auto-increment-offset'] %>

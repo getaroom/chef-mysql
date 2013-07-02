@@ -124,6 +124,10 @@ default['mysql']['tunable']['thread_concurrency']   = 10
 default['mysql']['tunable']['thread_stack']         = "256K"
 default['mysql']['tunable']['wait_timeout']         = "180"
 
+default['mysql']['tunable']['read_buffer_size']     = "128K"
+default['mysql']['tunable']['join_buffer_size']     = "128k"
+default['mysql']['tunable']['tmp_table_size']       = "16M"
+
 default['mysql']['tunable']['log_bin']                         = nil
 default['mysql']['tunable']['log_bin_trust_function_creators'] = false
 default['mysql']['tunable']['relay_log']                       =  nil
