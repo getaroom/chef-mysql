@@ -169,8 +169,6 @@ unless platform?(%w{mac_os_x})
     group node['mysql']['root_group'] unless platform? 'windows'
     mode "0644"
     case node['mysql']['reload_action']
-    when 'restart'
-      notifies :restart, resources(:service => "mysql"), :immediately
     when 'reload'
       notifies :reload, resources(:service => "mysql"), :immediately
     else
