@@ -4,15 +4,13 @@ when "debian","ubuntu"
 
   apt_repository "percona" do
     key "percona.key"
+    trusted true
     deb_src true
     uri "http://repo.percona.com/apt"
     distribution node['lsb']['codename']
     components ["main"]
+    cache_rebuild true
   end.run_action(:add)
 
-  resources("file[/etc/apt/sources.list.d/percona-source.list]").run_action(:create)
-
-  execute "compile time apt-get update" do
-    command "apt-get update"
-  end.run_action(:run)
+  resources("file[/etc/apt/sources.list.d/percona.list]").run_action(:create)
 end
