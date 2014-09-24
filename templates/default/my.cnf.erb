@@ -115,7 +115,7 @@ log-queries-not-using-indexes
 <%- if node['mysql']['tunable']['server-id'] %>
 server-id               = <%= node['mysql']['tunable']['server-id'] %>
 <%- else %>
-server-id               = <%= IPAddr.new(node['cloud']['local_ipv4']).to_i %>
+server-id               = <%= IPAddr.new(node.attribute?('cloud') ? node['cloud']['local_ipv4'] : "127.0.0.1") %>
 <%- end %>
 <%- if node['mysql']['tunable']['read_only'] %>
 read-only

@@ -11,6 +11,4 @@ when "debian","ubuntu"
     components ["main"]
     cache_rebuild true
   end.run_action(:add)
-
-  resources("file[/etc/apt/sources.list.d/percona.list]").run_action(:create)
 end
