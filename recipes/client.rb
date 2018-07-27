@@ -55,6 +55,14 @@ user "mysql" do
   supports({:manage_home => false})
 end
 
+if node["platform_version"] == "18.04"
+  node.force_override["mysql"]["client"]["packages"] = %w(libperconaserverclient20 libperconaserverclient20-dev percona-server-client-5.7)
+  while node.role_override['mysql']['client']['packages'].length > 0 do
+    node.role_override['mysql']['client']['packages'].delete(node.role_override['mysql']['client']['packages'][0])
+  end
+
+end
+
 node['mysql']['client']['packages'].each do |mysql_pack|
   package mysql_pack do
     action :install
