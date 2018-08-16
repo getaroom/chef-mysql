@@ -56,10 +56,10 @@ user "mysql" do
 end
 
 if node["platform_version"] == "18.04"
-  node.force_override["mysql"]["client"]["packages"] = %w(libperconaserverclient20 libperconaserverclient20-dev percona-server-client-5.7)
   while node.role_override['mysql']['client']['packages'].length > 0 do
     node.role_override['mysql']['client']['packages'].delete(node.role_override['mysql']['client']['packages'][0])
   end
+  node.force_override["mysql"]["client"]["packages"] = %w(libmysqlclient20 libmysqlclient-dev percona-server-client-5.7)
 
 end
 
